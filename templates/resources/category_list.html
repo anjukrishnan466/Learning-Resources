@@ -1,0 +1,71 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Category</h4>
+
+                <a class="btn btn-primary pull-right" href="{% url 'category:category_create' %}"> + ADD NEW Category
+                </a>
+
+
+
+                <div class="col-md-3">
+
+
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Sl
+                            </th>
+                            <th>
+                                Name </th>
+                            <th>
+                                Update </th>
+
+                            <th>
+                                Delete </th>
+
+
+                        </thead>
+                        <tbody>
+                            {% for category in category_list %}
+                            <tr>
+                                <td>
+                                    {{ forloop.counter }} </td>
+                                <td>
+                                    {{category.name}}
+                                </td>
+                                <td><a href="{% url 'category:category_update' category.id %} ">Update</a></td>
+                                <td><a href="{% url 'category:category_delete' category.id %}">Delete</a></td>
+
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

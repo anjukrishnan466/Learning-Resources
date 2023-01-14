@@ -1,0 +1,105 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Create Account
+                </h4>
+            </div>
+            <div class="card-body">
+
+                <!-- <h6 class="card-category">
+              Add your credentials
+          </h6> -->
+
+                <br />
+                     <form action="{% url 'edit' resources.id %}" method="POST" >
+                    {% csrf_token %}
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Title</label>
+                                <input type="text" class="form-control" placeholder="Title" value="{{resources.title}}" name="title">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Description</label>
+                                <input type="text" class="form-control" placeholder="Description"value="{{resources.description}}"name="description">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Category</label>
+                                <input type="text" class="form-control" placeholder="Category"value="{{resources.category}}" name="category">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Duration</label>
+                                <input type="text" class="form-control" placeholder="Duration" value="{{resources.duration}}"name="duration">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Link</label>
+                                <input type="text" class="form-control" name="link" value="{{resources.link}}" placeholder="link">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">File</label>
+                                <input type="file" id="myFile" name="resource_file">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <button type="submit" name="login" class="btn btn-primary pull-left">Save</button>
+
+
+                    <div class="clearfix"></div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "9549ed7e-9264-4d01-b648-321b4ee50024",
+		"name": "Dev Quest-assign projects and phases to centre-Admin-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assign a project and phases to centre",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer 345|UMZdMeiWeCsqihlqgIgWRZ2x04r9DypJjtFEPwUr",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 345|UMZdMeiWeCsqihlqgIgWRZ2x04r9DypJjtFEPwUr",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "project",
+							"value": "1bed6ce1-b25b-44ea-91b1-3e2424bf33b6",
+							"type": "text"
+						},
+						{
+							"key": "phases[]",
+							"value": "8e4902a9-6e5d-45e3-9109-c23b1fce9c90",
+							"type": "text"
+						},
+						{
+							"key": "phases[]",
+							"value": "1cf5fa74-ae59-4c65-8ae3-78da658699a1",
+							"type": "text"
+						},
+						{
+							"key": "phases[]",
+							"value": "52516a38-b6c6-4b47-b15c-5681707a2608",
+							"type": "text"
+						},
+						{
+							"key": "phases[]",
+							"value": "64545666-3a9b-4d26-b4b6-698c75b7e712",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://65.1.150.98/dev/admin-service/public/api/v1/centre/67029db5-36e8-4793-a078-639845996cdc/assign-project",
+					"protocol": "http",
+					"host": [
+						"65",
+						"1",
+						"150",
+						"98"
+					],
+					"path": [
+						"dev",
+						"admin-service",
+						"public",
+						"api",
+						"v1",
+						"centre",
+						"67029db5-36e8-4793-a078-639845996cdc",
+						"assign-project"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

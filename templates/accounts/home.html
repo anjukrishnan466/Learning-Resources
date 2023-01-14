@@ -1,0 +1,153 @@
+{% extends "layouts/base-user.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-warning card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                </div>
+                <p class="card-category">User Count</p>
+                <h3 class="card-title">{{user_count}}
+                    <!-- <small>GB</small> -->
+                </h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <!-- <i class="material-icons text-danger">warning</i>
+              <a href="#pablo">Get More Space...</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">store</i>
+                </div>
+                <p class="card-category">Resources</p>
+                <h3 class="card-title">{{resources_count}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <!-- <i class="material-icons">date_range</i> Last 24 Hours -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <!-- <i class="material-icons">info_outline</i> -->
+                </div>
+                <p class="card-category">Open Resources</p>
+                <h3 class="card-title">{{open_count}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <!-- <i class="material-icons">local_offer</i> Tracked from Github -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="fa fa-twitter"></i>
+                </div>
+                <p class="card-category">In Progress Resources</p>
+                <h3 class="card-title">{{in_progress}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <!-- <i class="material-icons">update</i> Just Updated -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+            <div class="card-header card-header-info card-header-icon">
+                <div class="card-icon">
+                    <i class="fa fa-twitter"></i>
+                </div>
+                <p class="card-category">Closed Resources</p>
+                <h3 class="card-title">{{closed}}</h3>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <!-- <i class="material-icons">update</i> Just Updated -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Resource Learning by users!</h4>
+
+
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card card-chart">
+                            <canvas id="myChart" width="500" height="100"></canvas>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<body>
+
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+    <script type="text/javascript">
+        $.get('{% url "line_chart_json" %}', function (data) {
+            var ctx = $("#myChart").get(0).getContext("2d");
+            new Chart(ctx, {
+                type: 'line', data: data
+            });
+        });
+    </script>
+</body>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script>
+    $(document).ready(function () {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
+
+    });
+</script>
+
+{% endblock javascripts %}

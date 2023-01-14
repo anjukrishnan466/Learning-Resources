@@ -1,0 +1,114 @@
+{% extends "layouts/base-without-side.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Create Account
+                </h4>
+            </div>
+            <div class="card-body">
+
+                <br />
+                <form action="/accounts/register" method="post">
+                    {% csrf_token %}
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">First Name</label>
+                                <input type="text" class="form-control" placeholder="First Name" name="first_name">
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Last Name" name="last_name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">UserName</label>
+                                <input type="text" class="form-control" placeholder="UserName" name="username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Email</label>
+                                <input type="email" class="form-control" placeholder="Email" name="email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Password</label>
+                                <input type="password" class="form-control" name="password1" placeholder="Password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Confirm Password</label>
+                                <input type="password" class="form-control" name="password2"
+                                    placeholder="Confirm Password">
+                            </div>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <button type="submit" name="login" class="btn btn-primary pull-left">Save</button>
+
+                    <div class="row">
+                        <div class="clearfix">
+                            <div>
+                                {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
+                                <div class="alert alert-success ">{{ message }}</div>
+                                {% elif message.tags == "error" %}
+                                <div class="alert alert-danger ">{{ message }}</div>
+                                {% endif %} {% endfor %} {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

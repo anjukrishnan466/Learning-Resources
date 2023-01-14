@@ -1,0 +1,67 @@
+
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Assign User to Resource
+                </h4>
+            </div>
+            <div class="card-body">
+ 
+                <br />
+                <form action="{% url 'assign' resources.id %}" method="post">
+                    {% csrf_token %}
+
+                    {% for user_without in all_user %}
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12">
+
+                                 <input type="checkbox" name="check" value="{{user_without.id}}"></div>
+                                 <div class="col-md-12">
+                                    <input type="text" class="form-control" 
+                                 value="{{user_without.first_name}}" name="first_name"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                     
+                    
+                    <button type="submit" name="login" class="btn btn-primary pull-left">Assign</button>
+
+                    <div class="row">
+                    <div class="clearfix">
+                        <div>
+                            {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
+                            <div class="alert alert-success ">{{ message }}</div>
+                            {% elif message.tags == "error" %}
+                            <div class="alert alert-danger ">{{ message }}</div>
+                            {% endif %} {% endfor %} {% endif %}
+                        </div>
+                    </div></div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,69 @@
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="/static/assets/img/sidebar-1.jpg">
+  <div class="logo">
+    <a target="_blank" rel="noopener noreferrer" href="https://appseed.us/admin-dashboards/django-dashboard-material"
+      class="simple-text logo-normal">
+      Resource Learning(Admin) </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+
+      <li class="nav-item {% if 'index' in segment %} active {% endif %}">
+        <a class="nav-link" href="/adminuser/index">
+          <i class="material-icons">dashboard</i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item {% if 'ui-typography' in segment %} active {% endif %}">
+        <a class="nav-link" href="/resources/index">
+          <i class="material-icons">library_books</i>
+          <p>Resources</p>
+        </a>
+      </li>
+      <li class="nav-item {% if 'ui-icons' in segment %} active {% endif %}">
+        <a class="nav-link" href="/accounts/index">
+          <i class="material-icons">bubble_chart</i>
+          <p>Users</p>
+        </a>
+      </li>
+      <li class="nav-item {% if 'ui-icons' in segment %} active {% endif %}">
+        <a class="nav-link" href="{% url 'category:all' %}">
+          <i class="material-icons">bubble_chart</i>
+          <p>Category</p>
+        </a>
+      </li>
+
+
+      <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+        <a class="nav-link" href="/adminuser/logout">
+          <i class="material-icons">logout</i>
+          <p>Logout</p>
+        </a>
+      </li>
+
+      {% else %}
+      <li class="nav-item {% if 'page-user' in segment %} active {% endif %}">
+        <a class="nav-link" href="/accounts/register">
+          <i class="material-icons">person</i>
+          <p>Register</p>
+        </a>
+      </li>
+      <li class="nav-item {% if 'ui-tables' in segment %} active {% endif %}">
+        <a class="nav-link" href="/accounts/login">
+          <i class="material-icons">content_paste</i>
+          <p>Login</p>
+        </a>
+      </li>
+      {% endif %}
+
+
+
+
+
+
+
+
+    </ul>
+  </div>
+
+</div>

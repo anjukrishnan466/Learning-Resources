@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Delete Category
+                </h4>
+            </div>
+            <div class="card-body">
+                <p class="h5">Are you sure you want to delete the category:</p>
+                <h3 class="my-5">{{ category.name }}</h3>
+
+                <br />
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% comment %} <input type="submit" value="Confirm">
+                    {% endcomment %}
+                    <input type="submit" class="btn btn-primary btn-lg" value="Confirm"
+                        style="margin-right: 30px; margin-top: 30px;">
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

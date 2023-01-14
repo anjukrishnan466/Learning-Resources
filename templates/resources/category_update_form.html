@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">
+                    Create Account
+                </h4>
+            </div>
+            <div class="card-body">
+
+
+                <br />
+                <form action="{% url 'category:category_update' category.id %}" method="post">
+                    {% csrf_token %}
+                                      <div class="form-control"> {{form.as_table}} </div>
+
+                    <div class="container d-flex justify-content-center" style="width: 10%;">
+                        <input type="submit" class="btn btn-primary btn-lg" value="Submit"
+                            style="margin-right: 30px; margin-top: 30px;">
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

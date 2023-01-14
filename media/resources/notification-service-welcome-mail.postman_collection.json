@@ -1,0 +1,44 @@
+{
+	"info": {
+		"_postman_id": "d469d119-3f03-463e-9cce-4b9e3c5b12bc",
+		"name": "notification-service-welcome-mail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Welcome-mail-sent-to-students",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "14|bSHrHtzfUDRNzk5rAgw2Oqhk2BwuXsXAo5CPNePJ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/student/welcome-Mail-Sent",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"welcome-Mail-Sent"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

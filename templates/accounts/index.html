@@ -1,0 +1,110 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">USERS</h4>
+
+                <a class="btn btn-primary pull-right" href="/accounts/store"> + ADD NEW Users </a>
+                <a class="btn btn-primary pull-right" href="/accounts/upload_user">Upload Users: (.xlsx)</a>
+                <a class="btn btn-primary pull-right" href="/accounts/download_user">Download all</a>
+
+
+
+                <div class="col-md-3 ">
+
+                    <form class="navbar-form  " action="{% url 'search_accounts' %}">
+                        <div class="input-group no-border">
+                            {% csrf_token %}
+                            <input type="text" value="" class="form-control" placeholder="Search..." name="search">
+                            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <i class="material-icons">search</i>
+                                <div class="ripple-container"></div>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Sl
+                            </th>
+                            <th>
+                                Name </th>
+                            <th>
+                                Username </th>
+
+                            <th>
+                                Email </th>
+                            <th>
+                                Status </th>
+                            <th>
+                                Assigned Resources </th>
+
+
+
+                            <th>Progress</th>
+                            <th>Edit</th>
+
+                            <th>Delete </th>
+                        </thead>
+                        <tbody>
+                            {% for account in accounts %}
+
+                            <tr>
+                                <td>
+                                    {{ forloop.counter }} </td>
+                                <td>
+                                    {{account.first_name}}
+                                </td>
+                                <td>
+
+                                    {{account.username}}
+
+                                </td>
+                                <td>
+                                    {{account.email}}
+                                </td>
+                                <td>
+                                    {{account.is_active}}
+                                </td>
+                                
+                                         <td><a class="dropdown-item-primary"
+                                        href="/accounts/assigned_resources/{{account.id}}">Assigned Resources</a></td>
+                                        <td><a class="dropdown-item-primary"
+                                        href="/accounts/user_pdf/{{account.id}}">Progress</a></td>
+
+                                <td><a class="dropdown-item-primary" href="/accounts/edit/{{account.id}}">Edit</a></td>
+
+                                <td><a class="dropdown-item text-danger" href="/accounts/delete/{{account.id}}"
+                                        onclick="return confirm('Are you want to delete ?')">Delete</a> </td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

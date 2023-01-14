@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "a340f202-7b65-49f4-a88f-9200ffb33389",
+		"name": "admin-centre-district",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18483244"
+	},
+	"item": [
+		{
+			"name": "centre-district-import",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "centre_upload_file",
+							"type": "file",
+							"src": "/home/focaloid/Documents/Centres (2).csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://questapp.dev/dev-data/admin-service/public/api/v1/centres-district/import",
+					"protocol": "https",
+					"host": [
+						"questapp",
+						"dev"
+					],
+					"path": [
+						"dev-data",
+						"admin-service",
+						"public",
+						"api",
+						"v1",
+						"centres-district",
+						"import"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,148 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Typography {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title">Resource Details</h4>
+    </div>
+    <div class="card-body">
+        <div id="typography">
+            <div class="card-title">
+                <h2>{{resources.title}} </h2>
+
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+
+
+
+
+                    <div class="col-md-12">
+
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Status</span>
+                                {% if status.status == 0 %}
+                                Open{% elif status.status == 1 %}
+                                In Progress{% else %}
+                                Closed{% endif %}
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Time Spend</span>
+                                {{status.time_spend}} Hours
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Title</span>{{resources.title}}
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Description</span>{{resources.description}}
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Link</span>{{resources.link}}
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Category</span>{{resources.category}}
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Duration</span>{{resources.duration}}
+                            </h3>
+                        </div>
+                        <div class="tim-typo">
+                            <h3>
+                                <span class="tim-note">Related Files</span> <a
+                                    href="/resources/download/{{resources.id}}/"> Download Document </a>
+
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Time Log</h4>
+                <div class="col-md-3 ">
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Sl
+                            </th>
+                            <th>
+                                Date </th>
+                            <th>
+                                Time</th>
+
+                        </thead>
+                        <tbody>
+                            {% for time in timespend %}
+
+                            <tr>
+                                <td>
+                                    {{ forloop.counter }} </td>
+                                <td>
+                                    {{time.date_user}}
+                                </td>
+                                <td>
+
+                                    {{time.time_spend_by_user}}   hr
+
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

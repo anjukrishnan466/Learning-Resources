@@ -1,0 +1,101 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Tables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">RESOURCES</h4>
+                <!-- <p class="card-category">List of Resources</p> -->
+                <!-- <span class="btn btn-primary pull-right">
+                    + ADD NEW RESOURCE<a href="/resources/upload" class="text-primary">Create</a>
+                </span>
+                 <button type="submit"class="btn btn-primary pull-left"> <a href="signup.html"></a>  + ADD NEW RESOURCE </button> -->
+                 <div class="col-md-6 pull-right">
+
+               <form class="navbar-form  pull-right" action="{% url 'search_resourcelist' %}">
+        <div class="input-group no-border">
+              {% csrf_token %}
+          <input type="text" value="" class="form-control" placeholder="Search..." name="search">
+          <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div> 
+      </form>
+   
+      </div>
+             </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th>
+                                Sl
+                            </th>
+                            <th>
+                                Title </th>
+                            <th>
+                                Category </th>
+                            <th>
+                                Link </th>
+                            <th>
+                                Duration </th>
+ 
+                            <th>
+                                View </th>
+                                 <th>
+                                Progress as pdf</th>
+
+
+
+
+                        </thead>
+                        <tbody>
+                            {% for resource in resources %}
+
+                            <tr>
+                                <td>
+                                    {{ forloop.counter }} </td>
+                                <td>
+                                    {{resource.title}}
+                                </td>
+                                <td>
+                                    {{resource.category}}
+
+                                </td>
+                                <td>
+                                    {{resource.link}}
+                                </td>
+                                <td>
+                                    {{resource.duration}}
+                                </td>
+
+                                <td><a class="dropdown-item-primary"
+                                        href="{% url 'accountsResources_admin' id=resource.id user_id=user_id %}">View</a>
+                                </td>
+                                <td><a class="dropdown-item-primary"
+                                        href="{% url 'user_progress' id=resource.id user_id=user_id %}">download</a>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

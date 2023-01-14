@@ -1,0 +1,141 @@
+<!-- Specific Page CSS goes HERE  -->
+
+
+<div class="card">
+    <div style="text-align:center;" class="card-header card-header-primary">
+        <h4 class="mx-auto card-title">
+
+            <h1>Resource learning progress with time log</h1>
+
+        </h4>
+    </div>
+    <div class="card-body">
+        <div id="typography">
+            <div class="card-title">
+                <h1>Resource Details </h1>
+
+                </h1>
+
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+
+
+
+
+                    <div class="col-md-12">
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Title: </span>
+                                {{resources.title}}
+                            </p>
+                        </div>
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Status: </span>
+                                {% if status.status == 0 %}
+                                Open{% elif status.status == 1 %}
+                                In Progress{% else %}
+                                Closed{% endif %}
+                            </p>
+                        </div>
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Time Spend: </span>
+                                {{status.total_time_spend}} Hours
+                            </p>
+                        </div>
+
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Description: </span>
+                                {{resources.description}}
+                            </p>
+                        </div>
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Link: </span> {{resources.link}}
+                            </p>
+                        </div>
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Category: </span>
+                                {{resources.category}}
+                            </p>
+                        </div>
+                        <div class="tim-typo">
+                            <p>
+                                <span class="tim-note" style="font-weight:bold;">Duration: </span>
+                                {{resources.duration}}
+                            </p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h1 class="card-title ">Time Log</h1>
+                <div class="col-md-3 ">
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th style="text-align:left;">
+                                Sl
+                            </th>
+                            <th style="text-align:left;">
+                                Date </th>
+                            <th style="text-align:left;">
+                                Time</th>
+
+                        </thead>
+                        <tbody>
+                            {% for time in timespend %}
+
+                            <tr>
+                                <td>
+                                    {{ forloop.counter }} </td>
+                                <td>
+                                    {{time.date_user}}
+                                </td>
+                                <td>
+
+                                    {{time.time_spend_by_user}} hr
+
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
